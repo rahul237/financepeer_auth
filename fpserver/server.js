@@ -15,10 +15,33 @@ app.post('/api/register', async (req, res) => {
         const user = await User.create(req.body)
         res.json({status:"ok"})
 
+
+
     }catch(e){
         res.json({status:"error", error: 'Duplicate email'})
 
     }
+})
+
+app.post('/api/login', async (req, res) => {
+    // console.log(req.body.email)
+    try{
+            const user = await User.findOne({
+            email: req.body.email,
+            password: req.body.password,
+
+        })
+
+        if(user){
+            return res.json({status:'ok', user:true})
+        }else{
+            return res.json({status: 'error', user: false})
+        }
+    }catch(e){
+        console.log(e);
+
+    }
+
 })
 
 app.get('/hello',(req, res)=>{
