@@ -1,6 +1,8 @@
 import {useState}  from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function App() {
+  const history = useNavigate()
   const [name, setname] = useState('')
   const [email, setemail] = useState('')
   const [password, setpassword] = useState('')
@@ -21,6 +23,10 @@ function App() {
     })
 
     const data = await response.json()
+
+    if(data.status ==='ok'){
+      history('/login')
+    }
 
     console.log(data)
   }

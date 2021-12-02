@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
+const jwt = require('jsonwebtoken')
 const mongoose = require('mongoose')
 const User = require('./models/user.model')
 
@@ -33,7 +34,15 @@ app.post('/api/login', async (req, res) => {
         })
 
         if(user){
-            return res.json({status:'ok', user:true})
+            const token = jwt.sign({
+                name: user.name,
+                email:user.email,
+            },
+                'financepeer'
+
+
+            )
+            return res.json({status:'ok', user:token})
         }else{
             return res.json({status: 'error', user: false})
         }

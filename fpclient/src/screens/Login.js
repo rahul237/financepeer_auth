@@ -20,6 +20,14 @@ function App() {
 
     const data = await response.json()
 
+    if(data.user){
+        localStorage.setItem('token', data.user)
+        alert('Login successful')
+        window.location.href = '/upload'
+    }else{
+        alert('Login failed')
+    }
+
     console.log(data)
   }
 
