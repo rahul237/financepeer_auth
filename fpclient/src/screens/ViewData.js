@@ -1,11 +1,14 @@
-import {useState}  from 'react'
+import {useState, useEffect}  from 'react'
+import Card from '../components/card'
 
 function App() {
-  const [email, setemail] = useState('')
-  const [password, setpassword] = useState('')
+  const [uploads, setuploads] = useState('')
+  const [isLoading, setisLoading] = useState(false)
 
-  async function loginUser(e){
-    e.preventDefault()
+
+
+  async function getUploads(){
+
     const response = await fetch('http://localhost:2307/api/viewuploads', {
       method:'GET',
       headers:{
@@ -15,24 +18,28 @@ function App() {
 
     const data = await response.json()
 
+    setuploads(data["data"]);
+    setisLoading(false);
+
     console.log(data)
+
+  }
+
+  useEffect(()=>{
+    getUploads()
+  },[])
+
+  if(isLoading){
+    return <div>Loading</div>
   }
 
   return (
     <div>
-      <h1>
-        Login
-      </h1>
-      <form onSubmit={loginUser}>
-        <input value = {email} onChange={(e)=>setemail(e.target.value)} type="email" placeholder="Email" />
-        <br></br>
-        <input value = {password} onChange={(e)=>setpassword(e.target.value)} type="password" placeholder="Password" />
-        <br/>
-        <input type="submit" value="Login"/>
-
-        
-
-      </form>
+    {
+      uploads.length>0 && uploads.map((item)=><Card data={item}></Card>)
+    }
+    {uploads.length}
+    wdqd
     </div>
   );
 }
