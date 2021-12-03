@@ -3,6 +3,8 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom'
 
 import Login from './screens/Login'
 import Register from './screens/Register'
+import Upload from './screens/Upload'
+
 
 
 
@@ -13,6 +15,7 @@ const App = () => {
                 <Routes>
                     <Route path="/login" exact element={<Login/>} />
                     <Route path="/register" exact element={<Register/>} />
+                    <Route path="/upload" exact element={<Upload/>} />
                 </Routes>
                 
 

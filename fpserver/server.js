@@ -53,9 +53,16 @@ app.post('/api/login', async (req, res) => {
 
 })
 
-app.get('/hello',(req, res)=>{
-    res.send('hello world')
-    res.json({status:"ok"})
+app.get('/api/upload',(req, res)=>{
+    const token = req.headers['x-access-token']
+
+    try{
+        const decoded = jwt.verify(token, 'financepeer')
+        const email = decoded.email
+    }catch(e){
+        console.log(e)
+        res.json({status:'error', error:'invalid token'})
+    }
 
 })
 
