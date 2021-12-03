@@ -1,4 +1,5 @@
 import {useState}  from 'react'
+import './styles/login.css'
 
 function App() {
   const [email, setemail] = useState('')
@@ -23,25 +24,30 @@ function App() {
     if(data.user){
         localStorage.setItem('token', data.user)
         alert('Login successful')
-        window.location.href = '/upload'
+        window.location.href = '/dashboard'
     }else{
-        alert('Login failed')
+        alert('Login failed. Please check that you have signed up with the email and password you entered.')
     }
 
     console.log(data)
   }
 
   return (
-    <div>
+    <div id = "loginbox">
       <h1>
         Login
       </h1>
       <form onSubmit={loginUser}>
-        <input value = {email} onChange={(e)=>setemail(e.target.value)} type="email" placeholder="Email" />
+        <input class="box" value = {email} onChange={(e)=>setemail(e.target.value)} type="email" placeholder="Email" />
         <br></br>
-        <input value = {password} onChange={(e)=>setpassword(e.target.value)} type="password" placeholder="Password" />
+        <input class="box" value = {password} onChange={(e)=>setpassword(e.target.value)} type="password" placeholder="Password" />
         <br/>
-        <input type="submit" value="Login"/>
+        <input class="button" type="submit" value="Login"/>
+        <br/>
+        <br/>
+
+
+        Don't have an account? <a href="/register">Sign Up</a>
 
         
 

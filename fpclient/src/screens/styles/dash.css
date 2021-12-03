@@ -1,0 +1,17 @@
+.dashbuttons{
+    background-color: rgb(140, 192, 240);
+    border-radius: 12px;
+    margin: auto;
+
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
+    padding-top: 25px;
+
+    width: 300px;
+    height: 77px;
+}
+
+#dashbox{
+    padding: 20px;
+}

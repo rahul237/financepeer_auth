@@ -1,5 +1,6 @@
 import {useState, useEffect}  from 'react'
 import Card from '../components/card'
+import './styles/view.css'
 
 function App() {
   const [uploads, setuploads] = useState('')
@@ -35,6 +36,7 @@ function App() {
 
   return (
     <div>
+      <h1 id="uploads">Uploads</h1>
     {
       uploads.length>0 && uploads.map((item)=><Card data={item}></Card>)
     }

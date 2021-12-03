@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import './styles/box.css'
+
 export default function Upload({ children }) {
   const [files, setFiles] = useState("");
 
@@ -35,6 +37,8 @@ const handleChange = e =>{
 
         uploadpost(elem)
 
+        
+
      
 
         
@@ -46,15 +50,19 @@ const handleChange = e =>{
       setFiles(e.target.result);
     
     };
+
+    alert("Your file has been uploaded")
+
+    window.location.href = '/view'
   };
 
   return (
-    <>
-      <h1>Upload Json file - Example</h1>
+    <div class="box">
+      <h1>Upload Json file</h1>
 
       <input type="file" onChange={handleChange} />
       <br />
       {/* {"uploaded file content -- " + files} */}
-    </>
+    </div>
   );
 }

@@ -1,5 +1,6 @@
 import {useState}  from 'react'
 import { useNavigate } from 'react-router-dom'
+import './styles/login.css'
 
 function App() {
   const history = useNavigate()
@@ -32,18 +33,23 @@ function App() {
   }
 
   return (
-    <div>
+    <div id="loginbox">
       <h1>
         Register
       </h1>
       <form onSubmit={registerUser}>
-        <input value = {name} onChange={(e)=>setname(e.target.value)} type="text" placeholder="Name" />
+        <input class="box" value = {name} onChange={(e)=>setname(e.target.value)} type="text" placeholder="Name" />
         <br></br>
-        <input value = {email} onChange={(e)=>setemail(e.target.value)} type="email" placeholder="Email" />
+        <input class="box" value = {email} onChange={(e)=>setemail(e.target.value)} type="email" placeholder="Email" />
         <br></br>
-        <input value = {password} onChange={(e)=>setpassword(e.target.value)} type="password" placeholder="Password" />
+        <input class="box" value = {password} onChange={(e)=>setpassword(e.target.value)} type="password" placeholder="Password" />
         <br/>
-        <input type="submit" value="Register"/>
+        <input class="button" type="submit" value="Register"/>
+        <br/>
+        <br/>
+
+
+        Already have an account? <a href="/login">Login</a>
 
         
 

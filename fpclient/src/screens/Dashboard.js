@@ -1,6 +1,8 @@
 import React from 'react'
 import jwt from 'jsonwebtoken'
 import {useNavigate} from 'react-router-dom'
+import {useEffect}  from 'react'
+import './styles/dash.css'
 
 
 const Dashboard = () =>{
@@ -20,8 +22,29 @@ const Dashboard = () =>{
             }
 
         }
-    }, [input])
-    return <h1>Hello World</h1>
+    }, [])
+    return(
+        <div id="dashbox">
+            <div class="dashbuttons">
+
+            
+            <a href="/upload">
+                Upload Data
+         
+            </a>
+
+            </div>
+
+            <br/>
+
+            <div class="dashbuttons">
+
+            <a href="/view">
+                View Uploaded Data
+            </a>
+            </div>
+        </div>
+    )
 }
 
 export default Dashboard

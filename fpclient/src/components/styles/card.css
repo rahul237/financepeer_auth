@@ -1,0 +1,14 @@
+#border{
+    max-width: 400px;
+    margin: auto;
+    border: 1px solid grey;
+    border-radius: 30px;
+    padding: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+#userid{
+    float: right;
+}
