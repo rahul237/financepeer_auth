@@ -1,36 +1,23 @@
-import {useState}  from 'react'
+import React, { useState } from "react";
 
-function App() {
-  const [Data, setData] = useState('')
-  const [ErrorData, setErrorData] = useState('')
+export default function Upload({ children }) {
+  const [files, setFiles] = useState("");
 
-  const readFileOnUpload = (uploadedFile) =>{
+  const handleChange = e => {
     const fileReader = new FileReader();
-    fileReader.onloadend = ()=>{
-       try{
-          setData((fileReader.result));
-          setErrorData(null)
-          console.log("uploaded")
-          console.log(Data)
-       }catch(e){
-          setErrorData("**Not valid JSON file!**");
-          console.log(ErrorData)
-       }
-    }
-    if( uploadedFile!== undefined)
-       fileReader.readAsText(uploadedFile);
- }
-
-
+    fileReader.readAsText(e.target.files[0], "UTF-8");
+    fileReader.onload = e => {
+      console.log("e.target.result", e.target.result);
+      setFiles(e.target.result);
+    };
+  };
   return (
-    <div>
-      <h1>
-        Upload
-      </h1>
-      <input type="file"
-  onChange={(e)=>readFileOnUpload(e.target.files[0])} />
-    </div>
+    <>
+      <h1>Upload Json file - Example</h1>
+
+      <input type="file" onChange={handleChange} />
+      <br />
+      {"uploaded file content -- " + files}
+    </>
   );
 }
-
-export default App;
