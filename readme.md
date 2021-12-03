@@ -4,4 +4,4 @@ This webapp has been made using the MERN stack, namely MongoDB, Express, React a
 run npm start
 in both client and server folder to run
 
-Id is treated as unique for uploaded json. So uploading json with ids which have already been uploaded will only add non duplicate ids on the database. The rest of the objects in the json will be ignored.
+Id is treated as unique for uploaded json. So uploading json with ids which have already been uploaded will only add non duplicate ids on the database. The rest of the objects in the json will be ignored. This behaviour can be change easily by changing the Upload model schema
