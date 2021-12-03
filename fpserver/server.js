@@ -55,18 +55,18 @@ app.post('/api/login', async (req, res) => {
 
 })
 
-app.get('/api/upload',(req, res)=>{
-    const token = req.headers['x-access-token']
+// app.get('/api/upload',(req, res)=>{
+//     const token = req.headers['x-access-token']
 
-    try{
-        const decoded = jwt.verify(token, 'financepeer')
-        const email = decoded.email
-    }catch(e){
-        console.log(e)
-        res.json({status:'error', error:'invalid token'})
-    }
+//     try{
+//         const decoded = jwt.verify(token, 'financepeer')
+//         const email = decoded.email
+//     }catch(e){
+//         console.log(e)
+//         res.json({status:'error', error:'invalid token'})
+//     }
 
-})
+// })
 
 app.post('/api/uploadjson', async (req, res) => {
     console.log(req.body)
@@ -78,6 +78,20 @@ app.post('/api/uploadjson', async (req, res) => {
 
     }catch(e){
         res.json({status:"error", error: 'Duplicate id'})
+
+    }
+})
+
+app.get('/api/viewuploads', async (req, res) => {
+    // console.log(req.body)
+    try{
+        const result = await Uploaded.find().populate()
+        res.json({data: result})
+
+
+
+    }catch(e){
+        res.json({status:"error", error: 'unable to get uploads'})
 
     }
 })

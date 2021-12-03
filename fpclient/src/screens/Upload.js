@@ -31,7 +31,7 @@ const handleChange = e =>{
       try{const list = (JSON.parse(e.target.result))
 
       list.map(elem => {
-        console.log(elem["id"])
+        // console.log(elem["id"])
 
         uploadpost(elem)
 
