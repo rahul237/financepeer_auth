@@ -4,6 +4,8 @@ const cors = require('cors')
 const jwt = require('jsonwebtoken')
 const mongoose = require('mongoose')
 const User = require('./models/user.model')
+const Uploaded = require('./models/uploaded.model')
+
 
 mongoose.connect('mongodb+srv://financepeer:financepeer@cluster0.bqeef.mongodb.net/FPDatabase?retryWrites=true&w=majority')
 
@@ -64,6 +66,20 @@ app.get('/api/upload',(req, res)=>{
         res.json({status:'error', error:'invalid token'})
     }
 
+})
+
+app.post('/api/uploadjson', async (req, res) => {
+    console.log(req.body)
+    try{
+        const user = await Uploaded.create(req.body)
+        res.json({status:"ok"})
+
+
+
+    }catch(e){
+        res.json({status:"error", error: 'Duplicate id'})
+
+    }
 })
 
 app.listen(2307, () => {
